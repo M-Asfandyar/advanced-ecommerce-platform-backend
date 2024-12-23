@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const CartSchema = new mongoose.Schema ({
   user: { type: mongoose.Schema.Types.ObjectId,
@@ -14,3 +14,5 @@ const CartSchema = new mongoose.Schema ({
     },
   ],
 });
+
+module.exports = mongoose.model('Cart', CartSchema); 

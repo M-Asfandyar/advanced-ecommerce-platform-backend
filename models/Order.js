@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema ({
   user: { type: mongoose.Schema.Types.ObjectId,
