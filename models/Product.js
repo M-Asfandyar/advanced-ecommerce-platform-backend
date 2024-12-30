@@ -25,4 +25,7 @@ const ProductSchema = new mongoose.Schema({
   }],
 });
 
+// Add indexes to optimize query performance
+ProductSchema.index({ name: 1, category: 1 });
+
 module.exports = mongoose.model('Product', ProductSchema); 
