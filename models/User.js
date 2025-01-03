@@ -18,6 +18,11 @@ const UserSchema = new mongoose.Schema({
     type: String, 
     default: 'user' 
   },
+  purchaseHistory: [ {
+     type: mongoose.Schema.Types.ObjectId, 
+     ref: 'Product' 
+    } 
+  ],
 });
 
 module.exports = mongoose.model('User', UserSchema);

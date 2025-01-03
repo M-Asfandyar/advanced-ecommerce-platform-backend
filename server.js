@@ -5,7 +5,8 @@ const cors = require('cors');
 const http = require('http'); 
 const { Server } = require('socket.io'); 
 const logger = require('./utils/logger');
-const { register, httpRequestDuration } = require('./utils/metrics'); // Import metrics
+const { register, httpRequestDuration } = require('./utils/metrics');
+const recommendationRoutes = require('./routes/recommendation');
 
 dotenv.config(); 
 
@@ -72,6 +73,7 @@ app.use('/api/products', (req, res, next) => {
 }, productRoutes); 
 app.use('/api/carts', cartRoutes); 
 app.use('/api/orders', orderRoutes); 
+app.use('/api/recommendations', recommendationRoutes);
 app.get('/', (req, res) => res.send('Backend is running!')); 
   
 // Start the server 
