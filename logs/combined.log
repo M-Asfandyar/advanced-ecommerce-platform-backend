@@ -19,3 +19,42 @@
 2025-01-03T15:43:45.004Z [[32minfo[39m]: A user connected: BM2bF_KZkYhcsJtDAAAB
 2025-01-03T15:45:00.305Z [[32minfo[39m]: User disconnected: BM2bF_KZkYhcsJtDAAAB
 2025-01-03T15:45:00.366Z [[32minfo[39m]: A user connected: BsjKh213YGZ30G21AAAD
+2025-01-03T17:13:28.733Z [[32minfo[39m]: User disconnected: BsjKh213YGZ30G21AAAD
+2025-01-03T17:13:30.006Z [[32minfo[39m]: A user connected: ftYHeb39L1sPhbXhAAAF
+2025-01-04T08:50:05.140Z [[32minfo[39m]: User disconnected: ftYHeb39L1sPhbXhAAAF
+2025-01-04T08:50:06.287Z [[32minfo[39m]: A user connected: bWBDQcT4cFbTjk4XAAAH
+2025-01-04T10:04:51.379Z [[32minfo[39m]: User disconnected: bWBDQcT4cFbTjk4XAAAH
+2025-01-04T10:04:53.278Z [[32minfo[39m]: A user connected: Z-zfH5rsMoFfv4iOAAAJ
+2025-01-04T15:43:56.721Z [[32minfo[39m]: Server running on port 4000
+2025-01-04T15:43:58.246Z [[32minfo[39m]: A user connected: 5Bza4vs8M1gnTgzbAAAB
+2025-01-04T15:43:59.348Z [[32minfo[39m]: Connected to MongoDB
+2025-01-04T16:10:42.442Z [[32minfo[39m]: Server running on port 4000
+2025-01-04T16:10:43.245Z [[32minfo[39m]: A user connected: dvzDIrDDb-bULBmTAAAB
+2025-01-04T16:10:45.888Z [[32minfo[39m]: Connected to MongoDB
+2025-01-04T16:11:17.880Z [[32minfo[39m]: Server running on port 4000
+2025-01-04T16:11:18.244Z [[32minfo[39m]: A user connected: XMOrlQqp5QrsicvEAAAB
+2025-01-04T16:11:21.082Z [[32minfo[39m]: Connected to MongoDB
+2025-01-04T16:14:10.917Z [[31merror[39m]: Error creating product: Product validation failed: name: Path `name` is required., price: Path `price` is required., stock: Path `stock` is required., category: Path `category` is required.
+2025-01-04T16:15:51.876Z [[32minfo[39m]: Product created: Wireless Keyboard (67795eb7ca75b9d68a67438e)
+2025-01-04T16:23:42.897Z [[32minfo[39m]: Cache miss. Fetched product listings from database.
+2025-01-04T16:25:43.352Z [[32minfo[39m]: Product created: Wireless mouse 2 (67796107ca75b9d68a674393)
+2025-01-04T16:26:01.609Z [[32minfo[39m]: Cache miss. Fetched product listings from database.
+2025-01-04T16:30:23.149Z [[32minfo[39m]: User disconnected: XMOrlQqp5QrsicvEAAAB
+2025-01-04T16:30:23.193Z [[32minfo[39m]: A user connected: ALgIAXzGpuJdO6yLAAAD
+2025-01-04T16:30:32.405Z [[32minfo[39m]: User disconnected: ALgIAXzGpuJdO6yLAAAD
+2025-01-04T16:30:32.427Z [[32minfo[39m]: A user connected: rUbGPG_Ql9FvyrzmAAAF
+2025-01-04T16:42:09.441Z [[32minfo[39m]: User disconnected: rUbGPG_Ql9FvyrzmAAAF
+2025-01-04T16:42:09.499Z [[32minfo[39m]: A user connected: 9z56RUL6qoyamiJhAAAH
+2025-01-04T16:43:04.708Z [[32minfo[39m]: User disconnected: 9z56RUL6qoyamiJhAAAH
+2025-01-04T16:43:04.751Z [[32minfo[39m]: A user connected: 2bWYnbTY5asJGUEBAAAJ
+2025-01-04T16:43:57.060Z [[32minfo[39m]: User disconnected: 2bWYnbTY5asJGUEBAAAJ
+2025-01-04T16:43:57.099Z [[32minfo[39m]: A user connected: NMmMIaZlV6NceuW5AAAL
+2025-01-04T16:44:47.557Z [[32minfo[39m]: User disconnected: NMmMIaZlV6NceuW5AAAL
+2025-01-04T16:44:47.606Z [[32minfo[39m]: A user connected: 0gu6WRhwOEfhWPEsAAAN
+2025-01-04T16:53:53.053Z [[32minfo[39m]: User disconnected: 0gu6WRhwOEfhWPEsAAAN
+2025-01-04T16:53:53.148Z [[32minfo[39m]: A user connected: uIHn6LVUeLdAEC7GAAAP
+2025-01-04T16:55:08.302Z [[32minfo[39m]: A user connected: Sct_wNevmsKEiE_KAAAR
+2025-01-04T16:56:19.989Z [[32minfo[39m]: User disconnected: Sct_wNevmsKEiE_KAAAR
+2025-01-04T16:56:20.033Z [[32minfo[39m]: A user connected: oX4wTULkFZPOTMpAAAAT
+2025-01-04T16:57:20.800Z [[32minfo[39m]: A user connected: FBohAz_ybFqTaS_tAAAV
+2025-01-04T17:08:03.888Z [[32minfo[39m]: User disconnected: FBohAz_ybFqTaS_tAAAV

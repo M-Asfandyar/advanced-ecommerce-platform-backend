@@ -15,14 +15,18 @@ const UserSchema = new mongoose.Schema({
     required: true 
   },
   role: { 
-    type: String, 
+    type: String,
+    enum: ['user', 'vendor', 'admin'], 
     default: 'user' 
   },
   purchaseHistory: [ {
      type: mongoose.Schema.Types.ObjectId, 
      ref: 'Product' 
-    } 
-  ],
+    }],
+    vendorId: { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'Vendor' 
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);

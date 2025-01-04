@@ -1,0 +1,1 @@
+2025-01-04T16:14:10.917Z [[31merror[39m]: Error creating product: Product validation failed: name: Path `name` is required., price: Path `price` is required., stock: Path `stock` is required., category: Path `category` is required.

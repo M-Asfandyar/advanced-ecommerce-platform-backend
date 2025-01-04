@@ -7,6 +7,7 @@ const { Server } = require('socket.io');
 const logger = require('./utils/logger');
 const { register, httpRequestDuration } = require('./utils/metrics');
 const recommendationRoutes = require('./routes/recommendation');
+const vendorRoutes = require('./routes/vendor')
 
 dotenv.config(); 
 
@@ -74,6 +75,7 @@ app.use('/api/products', (req, res, next) => {
 app.use('/api/carts', cartRoutes); 
 app.use('/api/orders', orderRoutes); 
 app.use('/api/recommendations', recommendationRoutes);
+app.use('/api/vendors', vendorRoutes);
 app.get('/', (req, res) => res.send('Backend is running!')); 
   
 // Start the server 

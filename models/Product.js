@@ -20,6 +20,11 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  vendorId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Vendor', 
+    required: true 
+  },
   role: [{
     type: String,
   }],
