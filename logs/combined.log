@@ -58,3 +58,50 @@
 2025-01-04T16:56:20.033Z [[32minfo[39m]: A user connected: oX4wTULkFZPOTMpAAAAT
 2025-01-04T16:57:20.800Z [[32minfo[39m]: A user connected: FBohAz_ybFqTaS_tAAAV
 2025-01-04T17:08:03.888Z [[32minfo[39m]: User disconnected: FBohAz_ybFqTaS_tAAAV
+2025-01-04T17:27:05.911Z [[32minfo[39m]: User disconnected: uIHn6LVUeLdAEC7GAAAP
+2025-01-04T17:27:05.912Z [[32minfo[39m]: User disconnected: oX4wTULkFZPOTMpAAAAT
+2025-01-04T17:27:07.252Z [[32minfo[39m]: A user connected: M1cdVe77m1Ik0XnfAAAX
+2025-01-04T17:27:08.420Z [[32minfo[39m]: A user connected: x4GZOzTHFMOjbxC9AAAZ
+2025-01-04T17:51:19.822Z [[32minfo[39m]: User disconnected: M1cdVe77m1Ik0XnfAAAX
+2025-01-04T19:01:36.814Z [[32minfo[39m]: User disconnected: x4GZOzTHFMOjbxC9AAAZ
+2025-01-04T19:01:38.763Z [[32minfo[39m]: A user connected: WnJf3gVVd9se_nzdAAAb
+2025-01-05T10:01:53.814Z [[32minfo[39m]: User disconnected: WnJf3gVVd9se_nzdAAAb
+2025-01-05T10:01:54.674Z [[32minfo[39m]: A user connected: uFczHGZ-s7Y3usNrAAAd
+2025-01-05T14:28:37.073Z [[32minfo[39m]: User disconnected: uFczHGZ-s7Y3usNrAAAd
+2025-01-05T14:28:39.001Z [[32minfo[39m]: A user connected: XH6zaQxKRqti86mOAAAf
+2025-01-05T14:29:23.638Z [[32minfo[39m]: User disconnected: XH6zaQxKRqti86mOAAAf
+2025-01-05T14:29:25.843Z [[32minfo[39m]: A user connected: BhQWgzqq3sxHDi1GAAAh
+2025-01-05T20:23:41.182Z [[32minfo[39m]: User disconnected: BhQWgzqq3sxHDi1GAAAh
+2025-01-05T20:23:42.775Z [[32minfo[39m]: A user connected: aP6IZY98CjOYo2S_AAAj
+2025-01-06T14:10:48.466Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:10:50.776Z [[32minfo[39m]: A user connected: oWQYAqKQT_4tm41fAAAB
+2025-01-06T14:10:51.108Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T14:10:54.231Z [[31merror[39m]: Error: app.use is not a function
+2025-01-06T14:15:26.088Z [[31merror[39m]: Error: app.use is not a function
+2025-01-06T14:27:05.205Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:27:06.775Z [[32minfo[39m]: A user connected: 0Pd_v-F1xu7gLldiAAAB
+2025-01-06T14:27:07.935Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T14:32:33.451Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:32:35.761Z [[32minfo[39m]: A user connected: IiSuTc0P1EWhERbJAAAB
+2025-01-06T14:32:36.029Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T14:33:07.452Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:33:09.759Z [[32minfo[39m]: A user connected: RUztgI4zm_8Uy0bXAAAB
+2025-01-06T14:33:10.089Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T14:33:53.710Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:33:53.775Z [[32minfo[39m]: A user connected: OGWqO5wfQmSPM82FAAAB
+2025-01-06T14:33:56.339Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T14:37:29.595Z [[32minfo[39m]: Product created: test 1234 (677beaa91f179e0343c264c2)
+2025-01-06T14:42:41.897Z [[32minfo[39m]: Product created: test 1234 (677bebe11f179e0343c264cc)
+2025-01-06T14:49:11.273Z [[32minfo[39m]: Server running on port 4000
+2025-01-06T14:49:11.765Z [[32minfo[39m]: A user connected: VKNqOSqnvmvweKWUAAAB
+2025-01-06T14:49:14.045Z [[32minfo[39m]: Connected to MongoDB
+2025-01-06T15:01:32.227Z [[32minfo[39m]: A user connected: k0ZAoWjdXlHIzwQkAAAD
+2025-01-06T15:13:04.919Z [[32minfo[39m]: User disconnected: VKNqOSqnvmvweKWUAAAB
+2025-01-06T15:13:04.920Z [[32minfo[39m]: User disconnected: k0ZAoWjdXlHIzwQkAAAD
+2025-01-06T15:13:04.991Z [[32minfo[39m]: A user connected: I-llXW5OUrbficoJAAAF
+2025-01-06T15:13:45.809Z [[32minfo[39m]: User disconnected: I-llXW5OUrbficoJAAAF
+2025-01-06T15:13:45.847Z [[32minfo[39m]: A user connected: WQfIRJfEq5lzUrVrAAAH
+2025-01-06T15:13:57.596Z [[32minfo[39m]: User disconnected: WQfIRJfEq5lzUrVrAAAH
+2025-01-06T15:13:57.625Z [[32minfo[39m]: A user connected: -OAw2yqoA29teaWLAAAJ
+2025-01-06T15:14:06.056Z [[32minfo[39m]: User disconnected: -OAw2yqoA29teaWLAAAJ
+2025-01-06T15:14:06.077Z [[32minfo[39m]: A user connected: 75liLts03eRJ5AClAAAL
