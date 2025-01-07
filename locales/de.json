@@ -1,0 +1,10 @@
+{
+  "error_product_not_found": "Produkt nicht gefunden",
+  "error_cart_not_found": "Warenkorb nicht gefunden",
+  "error_invalid_user_id": "Ungültiges Benutzer-ID-Format",
+  "error_insufficient_stock": "Nicht genügend Lagerbestand verfügbar",
+  "error_invalid_quantity": "Die Menge muss größer als Null sein.",
+  "error_generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut.",
+  "cart_updated_successfully": "Artikel erfolgreich zum Warenkorb hinzugefügt.",
+  "cart_item_removed_successfully": "Artikel erfolgreich aus dem Warenkorb entfernt."
+}

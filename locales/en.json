@@ -1,0 +1,10 @@
+{
+  "error_product_not_found": "Product not found",
+  "error_cart_not_found": "Cart not found",
+  "error_invalid_user_id": "Invalid User ID format",
+  "error_insufficient_stock": "Not enough stock available",
+  "error_invalid_quantity": "Quantity must be greater than zero.",
+  "error_generic": "Something went wrong. Please try again later.",
+  "cart_updated_successfully": "Item added to cart successfully.",
+  "cart_item_removed_successfully": "Item removed from the cart successfully."
+}

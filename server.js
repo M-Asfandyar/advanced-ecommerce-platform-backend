@@ -6,6 +6,7 @@ const http = require('http');
 const { Server } = require('socket.io'); 
 const logger = require('./utils/logger');
 const { register, httpRequestDuration } = require('./utils/metrics');
+const i18n = require('./i18n'); // Import i18n setup
 
 // Import routes
 const recommendationRoutes = require('./routes/recommendation');
@@ -22,6 +23,9 @@ app.use(cors());
 app.use(express.json()); 
 
 const PORT = process.env.PORT || 4000; 
+
+// ✅ Add i18n middleware for language detection and translations
+app.use(i18n.handle);
 
 // Middleware to track HTTP request metrics 
 app.use((req, res, next) => { 
@@ -81,7 +85,7 @@ app.get('/', (req, res) => res.send('Backend is running!'));
 // ✅ Global Error Handling Middleware
 app.use((err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
-    res.status(500).json({ message: 'Something went wrong!' });
+    res.status(500).json({ message: req.t('error_generic') }); // Use translated error message
 });
 
 // ✅ Start the server
