@@ -6,7 +6,8 @@ const http = require('http');
 const { Server } = require('socket.io'); 
 const logger = require('./utils/logger');
 const { register, httpRequestDuration } = require('./utils/metrics');
-const i18n = require('./i18n'); // Import i18n setup
+const i18n = require('./i18n'); 
+const middleware = require('i18next-http-middleware'); // ✅ Import the middleware correctly
 
 // Import routes
 const recommendationRoutes = require('./routes/recommendation');
@@ -24,8 +25,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 4000; 
 
-// ✅ Add i18n middleware for language detection and translations
-app.use(i18n.handle);
+// ✅ Apply the i18n middleware correctly
+app.use(middleware.handle(i18n));
 
 // Middleware to track HTTP request metrics 
 app.use((req, res, next) => { 
@@ -40,24 +41,24 @@ app.use((req, res, next) => {
     next(); 
 }); 
 
-// Prometheus Metrics Endpoint 
+// ✅ Prometheus Metrics Endpoint 
 app.get('/metrics', async (req, res) => { 
     res.setHeader('Content-Type', register.contentType); 
     res.end(await register.metrics()); 
 }); 
 
-// MongoDB Connection 
+// ✅ MongoDB Connection 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }) 
     .then(() => logger.info('Connected to MongoDB')) 
     .catch((err) => logger.error(`MongoDB connection error: ${err.message}`)); 
 
-// Create HTTP server and integrate Socket.IO 
+// ✅ Create HTTP server and integrate Socket.IO 
 const server = http.createServer(app); 
 const io = new Server(server, { 
     cors: { origin: '*' }
 }); 
 
-// Set up Socket.IO connections 
+// ✅ Set up Socket.IO connections 
 io.on('connection', (socket) => { 
     logger.info(`A user connected: ${socket.id}`); 
     socket.on('disconnect', () => { 
@@ -65,7 +66,7 @@ io.on('connection', (socket) => {
     }); 
 }); 
 
-// Make io available to routes via middleware 
+// ✅ Make io available to routes via middleware 
 app.use((req, res, next) => {
     req.io = io;
     next();
@@ -82,10 +83,10 @@ app.use('/api/vendors', vendorRoutes);
 // ✅ Health Check Endpoint
 app.get('/', (req, res) => res.send('Backend is running!'));
 
-// ✅ Global Error Handling Middleware
+// ✅ Global Error Handling Middleware with Translation Support
 app.use((err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
-    res.status(500).json({ message: req.t('error_generic') }); // Use translated error message
+    res.status(500).json({ message: req.t('error_generic') }); 
 });
 
 // ✅ Start the server

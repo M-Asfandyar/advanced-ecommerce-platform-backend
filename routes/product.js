@@ -3,24 +3,25 @@ const Product = require('../models/Product');
 const client = require('../utils/cache'); 
 const logger = require('../utils/logger');
 const { httpRequestDuration } = require('../utils/metrics');
-const jwt = require('jsonwebtoken'); // Added for vendor authorization
+const jwt = require('jsonwebtoken'); 
 const router = express.Router();
 
-// Middlewre for vendor Authentication and Data Isolation
+// ✅ Middleware for Vendor Authentication with Translations
 const authenticateVendor = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).json({ message: 'Unauthorized' });
-
+    if (!token) {
+        return res.status(401).json({ message: req.t('error_token_missing') });
+    }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.vendorId = decoded.id; // Assign vendorId from JWT token
+        req.vendorId = decoded.id; 
         next();
     } catch (error) {
-        return res.status(403).json({ message: 'Invalid token' });
+        return res.status(403).json({ message: req.t('error_invalid_token') });
     }
 };
 
-// Get all products (Filtered by Vendor wtih Caching)
+// ✅ Get All Products (Filtered by Vendor with Caching)
 router.get('/', authenticateVendor, async (req, res) => { 
     const { page = 1, limit = 10, category, sort } = req.query; 
     const cacheKey = `products:vendor=${req.vendorId}:page=${page}:limit=${limit}:category=${category || 'all'}:sort=${sort || 'none'}`; 
@@ -35,7 +36,7 @@ router.get('/', authenticateVendor, async (req, res) => {
             return res.status(200).json(JSON.parse(cachedData)); 
         } 
 
-        // Fetch only products for the authenticated vendor
+        // Fetch products for the authenticated vendor
         const query = category ? { category, vendorId: req.vendorId } : { vendorId: req.vendorId };
         const products = await Product.find(query)
             .sort(sort ? { [sort]: 1 } : {})
@@ -55,11 +56,11 @@ router.get('/', authenticateVendor, async (req, res) => {
     } catch (error) { 
         logger.error(`Error fetching products: ${error.message}`);
         end({ method: req.method, route: req.path, status: 500 });
-        res.status(500).send(error.message); 
+        res.status(500).json({ message: req.t('error_generic') });
     } 
 });
 
-// Create a New Product (Vendor Only)
+// ✅ Create a New Product (Vendor Only)
 router.post('/', authenticateVendor, async (req, res) => {
     const { name, description, price, stock, category, images } = req.body;
     const end = httpRequestDuration.startTimer(); 
@@ -74,15 +75,15 @@ router.post('/', authenticateVendor, async (req, res) => {
         logger.info(`Product created: ${newProduct.name} (${newProduct._id})`);
 
         end({ method: req.method, route: req.path, status: 201 });
-        res.status(201).json(newProduct);
+        res.status(201).json({ message: req.t('product_created_successfully'), product: newProduct });
     } catch (error) {
         logger.error(`Error creating product: ${error.message}`);
         end({ method: req.method, route: req.path, status: 500 });
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
-// Update a Product (Vendor Only)
+// ✅ Update a Product (Vendor Only)
 router.put('/:id', authenticateVendor, async (req, res) => {
     const end = httpRequestDuration.startTimer(); 
 
@@ -96,22 +97,22 @@ router.put('/:id', authenticateVendor, async (req, res) => {
         if (!updatedProduct) {
             logger.warn(`Product not found or unauthorized access: ${req.params.id}`);
             end({ method: req.method, route: req.path, status: 404 });
-            return res.status(404).send('Product not found or unauthorized');
+            return res.status(404).json({ message: req.t('error_product_not_found') });
         }
 
         req.io.emit('inventoryUpdate', { productId: updatedProduct._id, stock: updatedProduct.stock });
         logger.info(`Product updated: ${updatedProduct.name} (${updatedProduct._id})`);
 
         end({ method: req.method, route: req.path, status: 200 });
-        res.status(200).json(updatedProduct);
+        res.status(200).json({ message: req.t('product_updated_successfully'), product: updatedProduct });
     } catch (error) {
         logger.error(`Error updating product: ${error.message}`);
         end({ method: req.method, route: req.path, status: 500 });
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
-// Delete a Product (Vendor Only)
+// ✅ Delete a Product (Vendor Only)
 router.delete('/:id', authenticateVendor, async (req, res) => {
     const end = httpRequestDuration.startTimer(); 
 
@@ -120,16 +121,16 @@ router.delete('/:id', authenticateVendor, async (req, res) => {
         if (!deletedProduct) {
             logger.warn(`Unauthorized attempt to delete: ${req.params.id}`);
             end({ method: req.method, route: req.path, status: 404 });
-            return res.status(404).send('Product not found or unauthorized');
+            return res.status(404).json({ message: req.t('error_product_not_found') });
         }
 
         logger.info(`Product deleted: ${req.params.id}`);
         end({ method: req.method, route: req.path, status: 200 });
-        res.status(200).send('Product deleted successfully');
+        res.status(200).json({ message: req.t('product_deleted_successfully') });
     } catch (error) {
         logger.error(`Error deleting product: ${error.message}`);
         end({ method: req.method, route: req.path, status: 500 });
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 

@@ -6,39 +6,44 @@ const User = require('../models/User');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
-// ✅ Middleware for Vendor Authentication
+// ✅ Middleware for Vendor Authentication with Translations
 const authenticateVendor = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized. Token missing.' });
+        return res.status(401).json({ message: req.t('error_token_missing') });
     }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.vendorId = decoded.id;
         next();
     } catch (error) {
-        res.status(403).json({ message: 'Invalid token.' });
+        res.status(403).json({ message: req.t('error_invalid_token') });
     }
 };
 
-// ✅ Create an order and link it with vendorId
+// ✅ Create an order and link it with vendorId (with Translations)
 router.post('/:userId', async (req, res) => {
     const { address } = req.body;
     try {
-        // Fetch the user's cart and populate the products
+        // Validate ObjectId format
+        if (!req.params.userId || !mongoose.Types.ObjectId.isValid(req.params.userId)) {
+            return res.status(400).json({ message: req.t('error_invalid_user_id') });
+        }
+
+        // Fetch the user's cart and populate products
         const cart = await Cart.findOne({ user: req.params.userId }).populate('items.product');
         if (!cart || cart.items.length === 0) {
-            return res.status(400).send('Cart is empty');
+            return res.status(400).json({ message: req.t('error_cart_empty') });
         }
 
         // Calculate total price
         const totalAmount = cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-        const vendorId = cart.items[0].product.vendorId;  // Assuming all products belong to the same vendor
+        const vendorId = cart.items[0].product.vendorId; 
 
-        // Check and update product stock
+        // Check and update product stock with translations
         for (const item of cart.items) {
             if (item.product.stock < item.quantity) {
-                return res.status(400).send(`Not enough stock for ${item.product.name}`);
+                return res.status(400).json({ message: req.t('error_insufficient_stock', { product: item.product.name }) });
             }
             await Product.findByIdAndUpdate(item.product._id, { $inc: { stock: -item.quantity } });
         }
@@ -56,7 +61,7 @@ router.post('/:userId', async (req, res) => {
         });
         await newOrder.save();
 
-        // ✅ Update the user's purchase history
+        // ✅ Update user's purchase history
         await User.findByIdAndUpdate(req.params.userId, {
             $addToSet: { purchaseHistory: { $each: cart.items.map(item => item.product._id) } }
         });
@@ -71,10 +76,9 @@ router.post('/:userId', async (req, res) => {
             totalAmount
         });
 
-        res.status(201).json(newOrder);
+        res.status(201).json({ message: req.t('order_successful'), order: newOrder });
     } catch (error) {
-        console.error('Error Creating Order:', error.message);
-        res.status(500).send(`Error Creating Order: ${error.message}`);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
@@ -84,7 +88,7 @@ router.get('/vendor', authenticateVendor, async (req, res) => {
         const orders = await Order.find({ vendorId: req.vendorId }).populate('items.product');
         res.status(200).json(orders);
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
@@ -92,9 +96,12 @@ router.get('/vendor', authenticateVendor, async (req, res) => {
 router.get('/:userId/orders', async (req, res) => {
     try {
         const orders = await Order.find({ user: req.params.userId }).populate('items.product');
+        if (!orders || orders.length === 0) {
+            return res.status(404).json({ message: req.t('error_no_orders_found') });
+        }
         res.status(200).json(orders);
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
@@ -103,18 +110,21 @@ router.put('/:orderId', authenticateVendor, async (req, res) => {
     const { orderStatus } = req.body;
     try {
         const order = await Order.findById(req.params.orderId);
-        if (!order) return res.status(404).send('Order not found');
+        if (!order) {
+            return res.status(404).json({ message: req.t('error_order_not_found') });
+        }
 
+        // Validate vendor ownership
         if (order.vendorId.toString() !== req.vendorId) {
-            return res.status(403).send('You are not authorized to update this order.');
+            return res.status(403).json({ message: req.t('error_unauthorized_vendor') });
         }
 
         order.orderStatus = orderStatus;
         await order.save();
         req.io.emit('orderStatusUpdate', { orderId: req.params.orderId, orderStatus });
-        res.status(200).json(order);
+        res.status(200).json({ message: req.t('order_status_updated'), order });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).json({ message: req.t('error_generic') });
     }
 });
 
