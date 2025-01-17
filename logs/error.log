@@ -1,3 +1,4 @@
 2025-01-04T16:14:10.917Z [[31merror[39m]: Error creating product: Product validation failed: name: Path `name` is required., price: Path `price` is required., stock: Path `stock` is required., category: Path `category` is required.
 2025-01-06T14:10:54.231Z [[31merror[39m]: Error: app.use is not a function
 2025-01-06T14:15:26.088Z [[31merror[39m]: Error: app.use is not a function
+2025-01-17T17:25:00.261Z [[31merror[39m]: MongoDB connection error: queryTxt ETIMEOUT crud.xymuyor.mongodb.net

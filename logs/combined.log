@@ -154,3 +154,10 @@
 2025-01-15T19:33:17.640Z [[32minfo[39m]: A user connected: PntAdxJYyG8V88xIAAAH
 2025-01-16T16:31:21.301Z [[32minfo[39m]: User disconnected: PntAdxJYyG8V88xIAAAH
 2025-01-16T16:31:22.897Z [[32minfo[39m]: A user connected: pRPfSarEmJ7jNzkIAAAJ
+2025-01-16T19:37:44.725Z [[32minfo[39m]: User disconnected: pRPfSarEmJ7jNzkIAAAJ
+2025-01-16T19:37:46.734Z [[32minfo[39m]: A user connected: 3kEO1Ad4RCNGas7zAAAL
+2025-01-17T16:55:49.586Z [[32minfo[39m]: User disconnected: 3kEO1Ad4RCNGas7zAAAL
+2025-01-17T16:55:51.466Z [[32minfo[39m]: A user connected: L7wcoykzDdcESO-SAAAN
+2025-01-17T17:24:32.363Z [[32minfo[39m]: Server running on port 4000
+2025-01-17T17:24:37.061Z [[32minfo[39m]: A user connected: ZQ_ngpiLgzODkSYEAAAB
+2025-01-17T17:25:00.261Z [[31merror[39m]: MongoDB connection error: queryTxt ETIMEOUT crud.xymuyor.mongodb.net
